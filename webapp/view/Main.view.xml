@@ -1,0 +1,40 @@
+<mvc:View 
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns="sap.m" xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:vm="sap.ui.comp.variants"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    controllerName="at.hcm.timerebooking.controller.Main">
+    <f:DynamicPage id="dynamicPageId" headerExpanded="true">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="{parts: [{path: 'EmployeeName/FormattedName'},{path: 'EmployeeNumber'}] , formatter: '.formatter.formatObjectTitle' }" />
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+
+        </f:header>
+        <f:content>
+            <Table id="idTimeRebookingRequest"
+                   inset="false"
+                   class="sapFDynamicPageAlignContent"
+                   width="auto">
+                   <columns>
+                        <Column>
+                            <Text text="{i18n>requestDate}" />
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>requestType}" />
+                        </Column>                        
+                        <Column>
+                            <Text text="{i18n>requestTypeDescr}" />
+                        </Column>                        
+                   </columns>
+            </Table>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

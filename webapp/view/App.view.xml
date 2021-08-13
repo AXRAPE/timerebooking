@@ -1,0 +1,13 @@
+<mvc:View
+    controllerName="at.hcm.timerebooking.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+	<Shell id="shell">
+        <App
+            id="app"
+            busy="{appView>/busy}"
+            busyIndicatorDelay="{appView>/delay}"/>
+	</Shell>
+</mvc:View>
