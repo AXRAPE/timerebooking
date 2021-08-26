@@ -13,27 +13,56 @@
                 <f:heading>
                     <Title text="{parts: [{path: 'EmployeeName/FormattedName'},{path: 'EmployeeNumber'}] , formatter: '.formatter.formatObjectTitle' }" />
                 </f:heading>
+            <f:actions>
+                <Button text="{i18n>requestCreate}"
+                        type="Emphasized"
+                        press="onCreateRequest"/>
+            </f:actions>                
             </f:DynamicPageTitle>
         </f:title>
         <f:header>
-
+            <f:DynamicPageHeader pinnable="true">
+                <layout:HorizontalLayout allowWrapping="true">
+                    <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                        <ObjectAttribute title="{i18n>employeeCostCenter}" text="{parts: [{path: 'CostCenterText'},{path: 'CostCenterId'}] , formatter: '.formatter.formatObjectTitle'}"/>
+                        <ObjectAttribute title="{i18n>employeeOrgUnit}" text="{EmployeeOrgunitLongtext}"/>
+                        <ObjectAttribute title="{i18n>employeePosition}" text="{EmployeePositionLongtext}"/>
+                    </layout:VerticalLayout>
+                    <layout:VerticalLayout>
+                        <ObjectAttribute title="{i18n>employeeManager}" text="{parts: [{path: 'ManagerName'},{path: 'ManagerNumber'}] , formatter: '.formatter.formatObjectTitle' }"/>
+                    </layout:VerticalLayout>
+                </layout:HorizontalLayout>
+            </f:DynamicPageHeader>            
         </f:header>
         <f:content>
             <Table id="idTimeRebookingRequest"
                    inset="false"
                    class="sapFDynamicPageAlignContent"
                    width="auto">
-                   <columns>
-                        <Column>
-                            <Text text="{i18n>requestDate}" />
-                        </Column>
-                        <Column>
-                            <Text text="{i18n>requestType}" />
-                        </Column>                        
+                   <columns>                    
                         <Column>
                             <Text text="{i18n>requestTypeDescr}" />
+                        </Column> 
+                        <Column>
+                            <Text text="{i18n>requestDate}" />
                         </Column>                        
+                        <Column>
+                            <Text text="{i18n>requestAmount}" />
+                        </Column> 
+                       <Column>
+                            <Text text="{i18n>requestStatusDescr}" />
+                        </Column>                                                                     
                    </columns>
+                   <items>
+                    <ColumnListItem id="entitlementColumnListItem">
+                        <cells>
+                            <ObjectIdentifier title="{TimeBookingTypeDesr}" class="sapMTableContentMargin"/>
+                            <ObjectAttribute text= "{path:'RequestBeginDate', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { style: 'medium'}, constraints: { displayFormat : 'Date' }}"  />
+                            <ObjectNumber class="sapMTableContentMargin" emphasized="true" number="{path:'RequestAmount', type: 'sap.ui.model.odata.type.Double', formatOptions: { maxFractionDigits: 2, minFractionDigits: 0 }}" />
+                            <ObjectAttribute text="{RequestStatusDescr}"/>
+                        </cells>
+                    </ColumnListItem>
+                   </items>
             </Table>
         </f:content>
     </f:DynamicPage>
